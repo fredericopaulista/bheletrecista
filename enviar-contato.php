@@ -14,28 +14,70 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Email Config
-    $recipient = "contato@bheletricista.com.br"; // Ensure this email is correct or change it to the client's email
-    $subject = "Novo Contato pelo Site: $nome";
+require 'libs/PHPMailer/src/Exception.php';
+    require 'libs/PHPMailer/src/PHPMailer.php';
+    require 'libs/PHPMailer/src/SMTP.php';
 
-    // Email Content
-    $email_content = "Nome: $nome\n";
-    $email_content .= "Telefone / WhatsApp: $telefone\n";
-    $email_content .= "Bairro: $bairro\n";
-    $email_content .= "Serviço Solicitado: $servico\n\n";
-    $email_content .= "Descrição do Problema:\n$mensagem\n";
+    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
-    // Email Headers
-    $email_headers = "From: $nome <no-reply@bheletricista.com.br>\r\n"; // Ensure this domain is verified if using a mailer
-    $email_headers .= "Reply-To: $telefone\r\n";
+    try {
+        // ==========================================
+        // CONFIGURAÇÕES DO SERVIDOR SMTP
+        // ==========================================
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.seudominio.com.br'; // Ex: smtp.hostgator.com.br, smtp.gmail.com
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'seu_email@bheletricista.com.br'; // Email de envio (SMTP Username)
+        $mail->Password   = 'sua_senha_aqui'; // Senha do email
+        
+        // Criptografia (Geralmente STARTTLS na porta 587 ou SMTPS na porta 465)
+        $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS; // ou ENCRYPTION_STARTTLS
+        $mail->Port       = 465; // ou 587
+        
+        // Charset para evitar problemas com acentos PT-BR
+        $mail->CharSet = 'UTF-8';
 
-    // Send email
-    if (mail($recipient, $subject, $email_content, $email_headers)) {
+        // ==========================================
+        // CONFIGURAÇÕES DE REMETENTE E DESTINATÁRIO
+        // ==========================================
+        // Quem está enviando (Geralmente TEM QUE SER o mesmo email do Username do SMTP)
+        $mail->setFrom('seu_email@bheletricista.com.br', 'Site - BH Eletricista');
+        
+        // Para quem vai a mensagem (Email que recebe os contatos)
+        $mail->addAddress('contato@bheletricista.com.br', 'Contato BH Eletricista'); 
+        
+        // Responder para o email ou whatsapp do cliente (opcional)
+        // $mail->addReplyTo('cliente@email.com', $nome);
+
+        // ==========================================
+        // CONTEÚDO DO E-MAIL
+        // ==========================================
+        $mail->isHTML(true);
+        $mail->Subject = "Novo Contato pelo Site: $nome";
+        
+        // Corpo do Email em HTML
+        $mail->Body    = "
+            <h2>Novo Pedido de Atendimento</h2>
+            <p><strong>Nome:</strong> {$nome}</p>
+            <p><strong>Telefone / WhatsApp:</strong> {$telefone}</p>
+            <p><strong>Bairro:</strong> {$bairro}</p>
+            <p><strong>Serviço Solicitado:</strong> {$servico}</p>
+            <br>
+            <p><strong>Descrição do Problema:</strong><br>{$mensagem}</p>
+        ";
+        
+        // Corpo do Email em Texto (para clientes de email que não suportam HTML)
+        $mail->AltBody = "Nome: {$nome}\nTelefone: {$telefone}\nBairro: {$bairro}\nServiço: {$servico}\nMensagem: {$mensagem}";
+
+        $mail->send();
+        
         http_response_code(200);
-        echo "Obrigado! Sua mensagem foi enviada.";
-    } else {
+        echo "Obrigado! Sua mensagem foi enviada com sucesso.";
+
+    } catch (Exception $e) {
         http_response_code(500);
-        echo "Oops! Algo deu errado e não conseguimos enviar sua mensagem.";
+        // Em produção, você pode não querer exibir $mail->ErrorInfo pro usuário final, mas é útil para testar agora:
+        echo "Oops! Erro ao enviar a mensagem. Erro do Mailer: {$mail->ErrorInfo}";
     }
 
 } else {
