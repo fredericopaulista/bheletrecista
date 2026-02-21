@@ -139,11 +139,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 8. Dynamic WhatsApp Message (current URL)
-    const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
-    whatsappLinks.forEach(link => {
-        const currentUrl = window.location.href;
-        const message = encodeURIComponent(`Quero obter mais informações sobre ${currentUrl}`);
-        const baseHref = link.getAttribute('href').split('?')[0];
-        link.setAttribute('href', `${baseHref}?text=${message}`);
-    });
+    function updateWhatsAppLinks() {
+        const whatsappLinks = document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp.com/send"]');
+        whatsappLinks.forEach(link => {
+            const currentUrl = window.location.href;
+            const message = encodeURIComponent(`Quero obter mais informações sobre ${currentUrl}`);
+            let href = link.getAttribute('href');
+
+            // Avoid double appending
+            if (!href.includes('text=')) {
+                const separator = href.includes('?') ? '&' : '?';
+                link.setAttribute('href', `${href}${separator}text=${message}`);
+            }
+        });
+    }
+
+    updateWhatsAppLinks();
+    // Re-run after a small delay just in case of late rendered elements
+    setTimeout(updateWhatsAppLinks, 1000);
 });
