@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aterramento Elétrico Residencial e Comercial em BH</title>
-    <meta name="description" content="Instalação de hastes de aterramento (Fio Terra) de alta performance em Belo Horizonte.">
-    <link rel="canonical" href="https://bheletricista.com.br/aterramento-eletrico-bh.html">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body class="bg-gray-50 text-slate-800 font-sans flex flex-col min-h-screen">
-    
+const fs = require('fs');
+const path = require('path');
+
+const projectDir = __dirname;
+
+const headerHTML = `
     <!-- GLOBAL HEADER (PREMIUM UX) -->
     <header class="glass-header sticky top-0 z-50 border-b border-white/10 shadow-lg text-white transition-all duration-300">
         <div class="container mx-auto px-4 py-3 md:py-4 flex justify-between items-center">
@@ -34,39 +27,9 @@
             </div>
         </div>
     </header>
+`;
 
-
-    <section class="py-20 bg-slate-800 text-white text-center border-b-8 border-orange-500">
-        <div class="container mx-auto px-4 max-w-3xl">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Aterramento Elétrico Residencial e Comercial em BH</h1>
-            <p class="text-xl mb-8">Instalação de hastes de aterramento (Fio Terra) de alta performance em Belo Horizonte.</p>
-            <a href="https://wa.me/5531999999999" class="bg-orange-600 hover:bg-orange-500 text-white px-8 py-4 rounded-lg font-bold text-xl shadow-lg transition inline-block">Solicitar Orçamento Urgente</a>
-        </div>
-    </section>
-
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <h2 class="text-3xl font-bold mb-6 text-slate-800">Serviço Especializado em Belo Horizonte</h2>
-            <p class="text-lg mb-6 text-gray-700">Somos especialistas registrados e executamos serviços com extrema conformidade técnica seguindo as normas ND da concessonária de energia de Minas Gerais.</p>
-            
-            <div class="bg-orange-50 p-6 rounded-xl border border-orange-200 mb-8">
-                <h3 class="font-bold text-xl text-orange-800 mb-3">Por que nos escolher?</h3>
-                <ul class="list-disc pl-6 space-y-2 text-orange-900 font-medium">
-                    <li>Montagem com materiais 100% homologados (Inmetro/NBR)</li>
-                    <li>Sistemas de proteção contra surtos (DPS) e choques (DR)</li>
-                    <li>Equipe ágil com atendimento em toda a grande BH</li>
-                    <li>Aprovação rápida e garantida na primeira vistoria do fiscal</li>
-                </ul>
-            </div>
-
-            <div class="border-t-2 border-gray-100 pt-8 mt-8 text-center">
-                 <p class="text-lg font-bold mb-4">Veja mais serviços da nossa matriz de regularização:</p>
-                 <a href="/padrao-cemig-bh.html" class="inline-block bg-slate-100 border border-slate-300 px-6 py-3 rounded-md text-slate-700 font-bold hover:bg-slate-200 transition shadow-sm">⬅ Voltar para a Página Principal: Padrão CEMIG BH</a>
-            </div>
-        </div>
-    </section>
-
-    
+const footerHTML = `
     <!-- GLOBAL FOOTER (SEO SILOS & TRUST) -->
     <footer class="bg-slate-950 text-slate-400 py-16 border-t border-white/10 mt-auto">
         <div class="container mx-auto px-4">
@@ -129,7 +92,7 @@
             </div>
 
             <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium">
-                <p>&copy; 2026 BH Eletricista. Todos os direitos reservados.</p>
+                <p>&copy; ${new Date().getFullYear()} BH Eletricista. Todos os direitos reservados.</p>
                 <div class="flex gap-4">
                     <span>CNPJ Fictício: 00.000.000/0001-00</span>
                     <a href="/blog/por-que-disjuntor-desarma.html" class="hover:text-white transition">Blog Técnico</a>
@@ -137,6 +100,63 @@
             </div>
         </div>
     </footer>
+`;
 
-</body>
-</html>
+function processHtmlFiles(directory) {
+    const files = fs.readdirSync(directory);
+    for (const file of files) {
+        const fullPath = path.join(directory, file);
+        if (fs.statSync(fullPath).isDirectory()) {
+            if (!file.startsWith('.') && file !== 'assets' && file !== 'node_modules') {
+                processHtmlFiles(fullPath);
+            }
+        } else if (file.endsWith('.html')) {
+            let content = fs.readFileSync(fullPath, 'utf8');
+            let modified = false;
+
+            // 1. REPLACE HEADER
+            const headerRegex = /<header[\s\S]*?<\/header>/i;
+            if (headerRegex.test(content)) {
+                content = content.replace(headerRegex, headerHTML);
+                modified = true;
+            } else {
+                // If no header, inject right after <body>
+                content = content.replace(/<body[^>]*>/i, `$&${headerHTML}`);
+                modified = true;
+            }
+
+            // 2. REPLACE FOOTER
+            const footerRegex = /<footer[\s\S]*?<\/footer>/i;
+            if (footerRegex.test(content)) {
+                content = content.replace(footerRegex, footerHTML);
+                modified = true;
+            } else {
+                // If no footer, inject right before </body>
+                content = content.replace(/<\/body>/i, `${footerHTML}\n</body>`);
+                modified = true;
+            }
+
+            // 3. Optional: Add a smooth flex layout to body to push footer down
+            const bodyClassRegex = /<body\s+class="([^"]+)"/;
+            if (bodyClassRegex.test(content)) {
+                const match = content.match(bodyClassRegex);
+                const classes = match[1];
+                if (!classes.includes('flex flex-col min-h-screen')) {
+                    content = content.replace(bodyClassRegex, `<body class="$1 flex flex-col min-h-screen"`);
+                    modified = true;
+                }
+            } else {
+                content = content.replace(/<body>/i, `<body class="flex flex-col min-h-screen">`);
+                modified = true;
+            }
+
+            if (modified) {
+                fs.writeFileSync(fullPath, content);
+                console.log(`Injected components into: ${fullPath}`);
+            }
+        }
+    }
+}
+
+processHtmlFiles(projectDir);
+console.log('Component injection script finished successfully.');

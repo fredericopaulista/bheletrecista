@@ -1,144 +1,119 @@
-/* Custom styles beyond Tailwind */
-html {
-    scroll-behavior: smooth;
+/* 
+  Global Design System - BH Eletricista 
+  Premium Dark Theme with Amber/Yellow accents
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --color-primary: #0f172a;
+    /* Slate 900 */
+    --color-secondary: #f59e0b;
+    /* Amber 500 */
+    --color-accent: #fbbf24;
+    /* Amber 400 */
+    --color-danger: #ef4444;
+    /* Red 500 */
+    --color-text-light: #f8fafc;
+    /* Slate 50 */
+    --color-text-muted: #94a3b8;
+    /* Slate 400 */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    background-color: #f8fafc;
+    color: #1e293b;
 }
 
-/* Base Colors Configuration */
-:root {
-    --primary: #0f172a; /* Slate 900 */
-    --primary-light: #1e293b; /* Slate 800 */
-    --accent: #eab308; /* Yellow 500 */
-    --accent-hover: #ca8a04; /* Yellow 600 */
-    --whatsapp: #25D366;
-    --whatsapp-hover: #128C7E;
+/* Typography Enhancements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    letter-spacing: -0.025em;
 }
 
-/* Smooth fade-in animation for scroll */
+/* Glassmorphism Classes */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+}
+
+.glass-header {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* Animations & Micro-interactions */
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(245, 158, 11, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+    }
+}
+
+.btn-pulse {
+    animation: pulseGlow 2s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+.btn-glow {
+    box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.39);
+}
+
+.btn-glow:hover {
+    background: var(--color-accent);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Fade up on scroll */
 .fade-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    animation: fadeUp 0.8s ease-out forwards;
 }
 
-.fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Floating WhatsApp Button */
-.whatsapp-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--whatsapp);
-    color: white;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 100;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    text-decoration: none;
-}
-
-.whatsapp-float:hover {
-    background-color: var(--whatsapp-hover);
-    transform: scale(1.1);
-}
-
-.whatsapp-float svg {
-    width: 32px;
-    height: 32px;
-    fill: currentColor;
-}
-
-/* Hero Overlay */
-.hero-overlay {
-    background: linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.7) 100%);
-}
-
-/* FAQ Accordion */
+/* Accordion Smooth Transitions */
 .accordion-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
 }
 
 .accordion-item.active .accordion-content {
-    max-height: 500px; /* arbitrary large value */
+    max-height: 500px;
+    /* arbitrary max height */
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
-.accordion-item.active button svg {
+.accordion-item.active svg {
     transform: rotate(180deg);
-}
-
-/* Mobile Menu Transition */
-#mobile-menu {
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(100%);
-}
-
-#mobile-menu.open {
-    transform: translateX(0);
-}
-
-/* Buttons */
-.btn-primary {
-    background-color: var(--accent);
-    color: var(--primary);
-    font-weight: 700;
-    transition: all 0.2s ease;
-}
-
-.btn-primary:hover {
-    background-color: var(--accent-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.btn-outline {
-    border: 2px solid var(--accent);
-    color: var(--accent);
-    font-weight: 700;
-    transition: all 0.2s ease;
-}
-
-.btn-outline:hover {
-    background-color: var(--accent);
-    color: var(--primary);
-}
-
-.btn-whatsapp {
-    background-color: var(--whatsapp);
-    color: white;
-    font-weight: 700;
-    transition: all 0.2s ease;
-}
-
-.btn-whatsapp:hover {
-    background-color: var(--whatsapp-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-/* Utility to ensure cards are same height */
-.card-equal-height {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.card-equal-height > *:last-child {
-    margin-top: auto;
 }
