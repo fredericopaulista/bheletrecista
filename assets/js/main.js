@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     accordionHeaders.forEach(header => {
         header.addEventListener('click', () => {
             const item = header.parentElement;
-            
+
             // Close all others
             document.querySelectorAll('.accordion-item').forEach(otherItem => {
                 if (otherItem !== item) {
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Basic validation check
             let isValid = true;
             const requiredFields = contactForm.querySelectorAll('[required]');
-            
+
             requiredFields.forEach(field => {
                 if (!field.value.trim()) {
                     isValid = false;
@@ -121,10 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         const lazyImages = document.querySelectorAll('img[loading="lazy"]');
         const lazyImageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(function(entry) {
+            entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     let lazyImage = entry.target;
-                    if(lazyImage.dataset.src) {
+                    if (lazyImage.dataset.src) {
                         lazyImage.src = lazyImage.dataset.src;
                     }
                     lazyImage.classList.remove("lazy");
@@ -133,8 +133,19 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        lazyImages.forEach(function(lazyImage) {
+        lazyImages.forEach(function (lazyImage) {
             lazyImageObserver.observe(lazyImage);
+        });
+    }
+
+    // 8. Dynamic WhatsApp Message (current URL)
+    const waFloat = document.querySelector('.whatsapp-float');
+    if (waFloat) {
+        waFloat.addEventListener('click', (e) => {
+            const currentUrl = window.location.href;
+            const message = encodeURIComponent(`Quero obter mais informações sobre ${currentUrl}`);
+            const baseHref = waFloat.getAttribute('href').split('?')[0];
+            waFloat.setAttribute('href', `${baseHref}?text=${message}`);
         });
     }
 });
