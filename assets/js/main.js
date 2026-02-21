@@ -139,13 +139,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 8. Dynamic WhatsApp Message (current URL)
-    const waFloat = document.querySelector('.whatsapp-float');
-    if (waFloat) {
-        waFloat.addEventListener('click', (e) => {
-            const currentUrl = window.location.href;
-            const message = encodeURIComponent(`Quero obter mais informações sobre ${currentUrl}`);
-            const baseHref = waFloat.getAttribute('href').split('?')[0];
-            waFloat.setAttribute('href', `${baseHref}?text=${message}`);
-        });
-    }
+    const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+    whatsappLinks.forEach(link => {
+        const currentUrl = window.location.href;
+        const message = encodeURIComponent(`Quero obter mais informações sobre ${currentUrl}`);
+        const baseHref = link.getAttribute('href').split('?')[0];
+        link.setAttribute('href', `${baseHref}?text=${message}`);
+    });
 });
