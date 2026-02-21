@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bheletricista.com.br/sitemap.xml
