@@ -1,0 +1,370 @@
+const fs = require('fs');
+const path = require('path');
+
+const targetDir = path.join(__dirname, 'eletricista-residencial-bh', 'tomada-nao-funciona-bh');
+const targetFile = path.join(targetDir, 'index.html');
+
+if (!fs.existsSync(targetDir)) {
+    fs.mkdirSync(targetDir, { recursive: true });
+}
+
+const htmlContent = `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta Tags Básicas de SEO -->
+    <title>Tomada Não Funciona em Casa – Reparos Rápidos em BH</title>
+    <meta name="description"
+        content="Tomada não funciona? Eletricista residencial em Belo Horizonte para reparos rápidos, troca de tomada (10A/20A) e correção de falhas elétricas. Atendimento ágil na sua região.">
+    <link rel="canonical" href="https://bheletricista.com.br/eletricista-residencial-bh/tomada-nao-funciona-bh/">
+    
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- SCHEMA JSON-LD PARA LOCAL SEO E SERVICE -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["Electrician", "LocalBusiness"],
+          "@id": "https://bheletricista.com.br/eletricista-residencial-bh/tomada-nao-funciona-bh/#business",
+          "name": "Conserto Rápido de Tomadas - BH Eletricista",
+          "url": "https://bheletricista.com.br/eletricista-residencial-bh/tomada-nao-funciona-bh/",
+          "telephone": "+5531999999999",
+          "image": "https://bheletricista.com.br/assets/images/logo.png",
+          "priceRange": "$$",
+          "areaServed": "Belo Horizonte",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Belo Horizonte",
+            "addressRegion": "MG",
+            "addressCountry": "BR"
+          }
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Instalação, Troca e Conserto de Tomadas Residenciais",
+          "provider": {
+            "@id": "https://bheletricista.com.br/eletricista-residencial-bh/tomada-nao-funciona-bh/#business"
+          },
+          "areaServed": "Belo Horizonte"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "A tomada do quarto parou. Posso puxar uma extensão de outra do mesmo cômodo?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sim para aparelhos leves (celular), mas é um risco tremendo plugar aquecedores ou secadores. É fundamental checar porque a primeira tomada morreu, pois o circuito imerso na parede pode já estar sobrecarregado."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Tomada queimada preta pode afetar as outras da casa?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Pode. Em apartamentos de BH, as tomadas muitas vezes são ligadas 'em cascata' (paralelo saltando de uma caixinha pra outra). Se a primeira da fileira derreter, o fio neutro se perde e as vizinhas morrem junto."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "É perigoso eu mesmo abrir a tampinha e apertar com chave Phillips?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sim. Músculo ou chave de fenda sem isolamento encostando na fase 127V/220V com os pés descalços pode ser fatal. Além disso, você pode não saber identificar visualmente cabos carbonizados por trás."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Vocês atendem chamados rápidos (pequenos serviços)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Com certeza. Nossas pranchetas cobrem Belo Horizonte inteira para reparos curtos como substituição de tomadas derretidas com pinos de Air Fryers (20A)."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="bg-slate-50 flex flex-col min-h-screen text-slate-800 font-sans">
+    
+    <!-- GLOBAL HEADER (PREMIUM UX) - RELIABILITY FOCUS -->
+    <header class="bg-slate-950/95 glass-header sticky top-0 z-50 border-b border-sky-500/20 shadow-[0_4px_30px_rgba(14,165,233,0.05)] text-white transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 md:py-4 flex justify-between items-center">
+            <a href="/index.html" class="flex items-center gap-2 group">
+                <span class="text-3xl text-sky-500 transition-transform group-hover:scale-110">⚡</span>
+                <div class="flex flex-col">
+                    <span class="text-xl md:text-2xl font-black tracking-tight leading-none">BH<span class="text-sky-500">Eletricista</span></span>
+                    <span class="text-[10px] md:text-xs text-sky-200/50 font-bold uppercase tracking-widest hidden sm:block delay-150 transition-colors group-hover:text-sky-400">Reparo Expresso</span>
+                </div>
+            </a>
+            
+            <div class="flex items-center gap-6">
+                <nav class="hidden md:flex gap-6 text-sm font-bold text-slate-300 uppercase tracking-wider">
+                    <a href="/eletricista-residencial-bh.html" class="hover:text-white transition border-b-2 border-transparent hover:border-sky-500 pb-1">Casa & Apto</a>
+                    <a href="/eletricista-residencial-bh/tomada-nao-funciona-bh/index.html" class="text-white border-b-2 border-sky-500 pb-1 flex items-center gap-1"><span class="text-sky-400">🔌</span> Ponto Comum</a>
+                </nav>
+                <a href="https://wa.me/5531999999999" class="btn-pulse btn-glow bg-sky-600 hover:bg-sky-500 text-white px-5 md:px-6 py-2 md:py-2.5 rounded-full font-black transition-all flex items-center gap-2 text-sm md:text-base ring-4 ring-sky-500/20">
+                    <span class="hidden sm:inline">Resolver</span> Ponto
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SEÇÃO 1: HERO - A DOR DA ROTINA (CELULAR NÃO CARREGA, TV DESLIGOU) -->
+    <section class="relative bg-slate-950 text-white overflow-hidden py-24 md:py-32">
+        <div class="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1555541676-e0cedb0e77d5?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat opacity-20 mix-blend-luminosity grayscale"></div>
+        <div class="absolute inset-0 z-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-sky-950/40"></div>
+        
+        <!-- Foco azul claro remetendo a "serviço comum, do dia a dia", limpo -->
+        <div class="absolute -top-1/4 -right-1/4 w-[600px] h-[600px] bg-sky-600/10 rounded-full blur-[100px]"></div>
+        
+        <div class="container mx-auto px-4 relative z-10 max-w-4xl text-center fade-up font-sans">
+            <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-sm font-bold mb-8 tracking-wider uppercase shadow-lg shadow-sky-900/10">
+                <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+                ATENDIMENTO AGILIZADO NA CAPITAL
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-tight tracking-tight text-white drop-shadow-xl">
+                Tomada Não Funciona <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-cyan-300">Resolução Rápida BH</span>
+            </h1>
+            <h2 class="text-xl md:text-3xl font-medium mb-8 text-slate-300 drop-shadow">
+                Diagnóstico de falha, troca de espelho derretido e readaptação para plugues grossos (20A).
+            </h2>
+            <p class="text-lg mb-10 text-slate-400 max-w-2xl mx-auto font-medium bg-slate-900/60 p-5 border-l-4 border-sky-500 rounded-r-xl backdrop-blur-sm text-left">
+                Se uma tomada subitamente parou, afrouxou os pinos ou deu aquele estrondo (pipoco) quando foi carregar algo, é perigoso deixá-la morta na parede. Atuamos com as mochilas destravadas para corrigir pequenos pontos viciosos em Belo Horizonte com preço que cabe na visita técnica e com 100% de segurança de uso.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://wa.me/5531999999999" class="bg-sky-600 hover:bg-sky-500 text-white px-8 py-5 rounded-lg text-xl font-bold flex justify-center items-center gap-3 transition-transform hover:scale-105 shadow-[0_0_30px_rgba(14,165,233,0.3)]">
+                    <svg class="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Agendar Troca Imediata
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCO 1 CULPADOS E BLOCO 2 O QUE FAZEMOS -->
+    <section class="py-16 bg-white overflow-hidden relative border-t border-slate-200">
+        <div class="container mx-auto px-4 max-w-6xl fade-up">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                
+                <!-- O que dá errado (Causas) -->
+                <div>
+                    <h2 class="text-3xl font-black mb-6 text-slate-900 leading-tight">Por que uma tomada de repente "morre"?</h2>
+                    <p class="text-slate-600 mb-8 font-medium leading-relaxed">
+                        Ao contrário do que parece, a 'morte' costuma ser do conector ou da emenda, e não da rede elétrica inteira.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-sky-50 p-4 border-l-4 border-sky-500 rounded-r flex items-center gap-4 hover:bg-sky-100 transition-colors">
+                            <span class="text-sky-600 text-2xl">🔌</span>
+                            <p class="text-slate-800 text-sm"><strong class="font-bold text-sky-900">Arrombamento Mecânico:</strong> Você usou Adaptador Têe "Benjamin" bruto cheio de celulares e a mola interna de metal de contato cansou e alargou irreversivelmente.</p>
+                        </div>
+                        <div class="bg-sky-50 p-4 border-l-4 border-sky-500 rounded-r flex items-center gap-4 hover:bg-sky-100 transition-colors">
+                            <span class="text-sky-600 text-2xl">🔥</span>
+                            <p class="text-slate-800 text-sm"><strong class="font-bold text-sky-900">Queima Térmica Lenta:</strong> O famoso pino grosso do secador de cabelo injetado na força bruta numa tomada normal (10A). Ela literalmente cozinhou o plástico.</p>
+                        </div>
+                        <div class="bg-sky-50 p-4 border-l-4 border-sky-500 rounded-r flex items-center gap-4 hover:bg-sky-100 transition-colors">
+                            <span class="text-sky-600 text-2xl">⚡</span>
+                            <p class="text-slate-800 text-sm"><strong class="font-bold text-sky-900">Dente de Cascata Perdido:</strong> O fio rompeu as costas desta tomada e cortou a energia para todas as as outras seguintes na mesma parede.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- O que a gente faz / etapas -->
+                <div class="bg-slate-900 text-white p-8 rounded-3xl relative shadow-2xl relative overflow-hidden flex flex-col justify-center">
+                    <div class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-sky-500 to-cyan-300"></div>
+                    <h2 class="text-2xl font-black mb-6 flex items-center gap-3">
+                        <span class="bg-sky-600 p-2 rounded-lg text-white">💼</span>
+                        Metodologia de Ponto
+                    </h2>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-slate-800 border border-sky-500/50 flex items-center justify-center text-sky-400 font-bold shrink-0 mt-0.5">1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-100 text-base">Teste Multímetro Inicial</h4>
+                                <p class="text-slate-400 text-sm mt-1">Lemos a tensão antes de quebrar parede (se é zero mesmo ou se a tensão oscila pra checar fase rompida no teto).</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-slate-800 border border-sky-500/50 flex items-center justify-center text-sky-400 font-bold shrink-0 mt-0.5">2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-100 text-base">Decape e Isolamento Limpo</h4>
+                                <p class="text-slate-400 text-sm mt-1">Extraímos o módulo, cortamos fora o pedaço de cobre duro esturricado e decapamos perdas novas saudáveis.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-slate-800 border border-sky-500/50 flex items-center justify-center text-sky-400 font-bold shrink-0 mt-0.5">3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-100 text-base">Fixação de Hardware Premium</h4>
+                                <p class="text-slate-400 text-sm mt-1">Trancamos módulos plásticos antichama puros novos. Com 10A ou 20A (Pino Grosso vermelho) dependendo do que aquele ponto carrega normalmente.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCO 3 SINAIS DE RISCO E 4 O QUE MAIS TEM EM BH (ESTÉTICA MODERNA) -->
+    <section class="py-16 bg-slate-50 relative border-t border-slate-200">
+        <div class="container mx-auto px-4 max-w-5xl fade-up">
+            
+            <div class="mb-16 text-center">
+                <h2 class="text-3xl font-black text-slate-900 border-b-4 border-red-500 inline-block pb-2">Desconecte Imediato Se:</h2>
+                <p class="text-slate-600 mt-4 font-medium max-w-3xl mx-auto">Em uma tomada que simplesmente 'não funciona', você desliga da parede. Mas se o problema escalar para os cenários abaixo, o risco de início de incêndio oculto atrás dos espelhos plásticos é letal.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-16 text-center">
+                 <div class="bg-red-50 p-6 rounded-2xl border border-red-200">
+                    <span class="text-3xl block mb-2">🔥</span>
+                    <h3 class="font-bold text-slate-800 text-sm uppercase">Cheiro de Peixe Queimado</h3>
+                 </div>
+                 <div class="bg-orange-50 p-6 rounded-2xl border border-orange-200">
+                    <span class="text-3xl block mb-2">⚡</span>
+                    <h3 class="font-bold text-slate-800 text-sm uppercase">Faísca Visível no Plástico</h3>
+                 </div>
+                 <div class="bg-yellow-50 p-6 rounded-2xl border border-yellow-200">
+                    <span class="text-3xl block mb-2">🌡️</span>
+                    <h3 class="font-bold text-slate-800 text-sm uppercase">Quente ao Encostar o Dedo</h3>
+                 </div>
+                 <div class="bg-sky-50 p-6 rounded-2xl border border-sky-200">
+                    <span class="text-3xl block mb-2">💧</span>
+                    <h3 class="font-bold text-slate-800 text-sm uppercase">Choques no Pino "Terra" Falso</h3>
+                 </div>
+            </div>
+
+            <div class="bg-sky-900 p-8 md:p-12 rounded-3xl border border-sky-800 flex flex-col md:flex-row items-center gap-10 shadow-lg text-white">
+                <div class="md:w-1/2">
+                    <h3 class="text-3xl font-black text-sky-400 mb-4 tracking-tight">O Fim das Extensões Derretidas</h3>
+                    <p class="text-sky-100 font-medium mb-6 leading-relaxed">
+                        A solução definitiva para quem tem Home-Offices modernos ou cozinhas lotadas (Micro-ondas/Forno/AirFryer) não é usar Benjamins. Nós criamos pontos duplos ou triplos na mesma caixinha ou furamos e convertemos sua caixa simples em <strong>"Padrão 20 Ampéres" Novo Vermelho</strong> puxando conduítes se necessário.
+                    </p>
+                    <a href="https://wa.me/5531999999999" class="font-bold text-white uppercase tracking-wider text-sm border border-sky-400 py-3 px-6 rounded-xl hover:bg-sky-800 transition shadow-inner flex items-center gap-2 inline-flex">Reservar Atualização de Tomadas <span aria-hidden="true">&rarr;</span></a>
+                </div>
+                <div class="md:w-1/2 w-full">
+                     <div class="grid grid-cols-2 gap-4">
+                         <div class="bg-sky-800 p-6 rounded-xl text-center border border-sky-700">
+                             <span class="block text-4xl mb-2 text-sky-200">🔌</span>
+                             <span class="font-bold text-white text-sm">Espelho Duplo/Triplo 10A</span>
+                         </div>
+                         <div class="bg-red-900/40 p-6 rounded-xl text-center border border-red-800">
+                            <span class="block text-4xl mb-2 text-rose-400">🚨</span>
+                            <span class="font-bold text-white text-sm">Troca P/ Cozinha: Pino Grosso 20A</span>
+                        </div>
+                     </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- BLOCO 5 PRECOS -->
+    <section class="py-16 bg-white border-t border-slate-200">
+        <div class="container mx-auto px-4 max-w-4xl fade-up text-center">
+            <h2 class="text-3xl font-black mb-6 text-slate-900">Quantos Pontos Vamos Trocar?</h2>
+            <p class="text-slate-600 text-base max-w-2xl mx-auto">
+                Para visita técnica e troca de um módulo mecânico estragado que a fiação já existe sadia lá dentro, o preço é baixíssimo. Você pode economizar muito no agendamento se nos pedir para trocar todas as 22 tomadas antigas da casa e modernizar os interruptores amarelos da sala numa visita só, baixando o preço "por dente/módulo" no orçamento final (Retrofit Menor).
+            </p>
+        </div>
+    </section>
+
+    <!-- BLOCO FINAL — CTA FIRME -->
+    <section class="py-24 bg-slate-900 text-white text-center border-t border-sky-900/50 relative overflow-hidden">
+        <div class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-sky-900 via-sky-500 to-sky-900"></div>
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\\'40\\' height=\\'40\\' viewBox=\\'0 0 40 40\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cpath d=\\'M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z\\' fill=\\'%230ea5e9\\' fill-opacity=\\'0.03\\' fill-rule=\\'evenodd\\'/%3E%3C/svg%3E')]"></div>
+        
+        <div class="container mx-auto px-4 fade-up relative z-10">
+            <h2 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">O Que Precisou Funcionar Agora e Não Deu?</h2>
+            <p class="text-xl md:text-2xl font-medium mb-10 max-w-2xl mx-auto text-slate-300">Evite a escadinha e a fita preta. A ligação pro nosso time te deixará plugar a força novamente em paz.</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="tel:+5531999999999" class="bg-sky-600 hover:bg-sky-500 text-white px-8 py-5 rounded-xl text-xl md:text-2xl font-black flex justify-center items-center gap-3 transition-transform hover:scale-105 shadow-[0_10px_40px_rgba(14,165,233,0.3)] tracking-tight">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Fechar Orçamento de Reparo Express
+                </a>
+            </div>
+            <p class="mt-8 font-bold text-sm tracking-widest uppercase text-slate-500">Unidades Táticas para Pequenos Serviços em toda BH (Centro, Sion, Barreiro e Venda Nova).</p>
+        </div>
+    </section>
+
+    <!-- GLOBAL FOOTER (SEO SILOS & TRUST) -->
+    <footer class="bg-slate-950 text-slate-400 py-16 border-t border-sky-500/10 mt-auto">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Brand Info -->
+                <div class="flex flex-col gap-4">
+                    <a href="/index.html" class="flex items-center gap-2">
+                        <span class="text-2xl text-sky-500">⚡</span>
+                        <span class="text-xl font-black text-white tracking-tight">BH<span class="text-sky-500">Eletricista</span></span>
+                    </a>
+                    <p class="text-sm leading-relaxed mt-2 text-slate-500">
+                        <!-- BLOCO SEO LOCAL TÉCNICO INVISÍVEL -->
+                        Conserto de tomada em Belo Horizonte | Eletricista para tomada queimada BH | Reparo elétrico residencial ágil BH | Troca de tomada 20A micro-ondas BH.
+                    </p>
+                    <div class="flex items-center gap-2 mt-2">
+                        <span class="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-sky-500 border border-white/5">🔧</span>
+                        <span class="text-xs font-bold text-slate-300">Manutenção Descomplicada</span>
+                    </div>
+                </div>
+
+                <!-- Silo 1 -->
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Falhas Relacionadas</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/troca-de-fiacao-eletrica-bh/index.html" class="hover:text-sky-400 transition">O Cabo da Tomada Estava Derretido Dentro? Puxamos fios novos</a></li>
+                        <li><a href="/eletricista-residencial-bh/manutencao-quadro-de-luz-bh/index.html" class="hover:text-sky-400 transition text-slate-300 font-bold">O Defeito Vem da Fonte Central (Quadro de Força)?</a></li>
+                        <li><a href="/eletricista-24-horas-bh/emergencia-eletrica-bh/index.html" class="hover:text-sky-400 transition">Saiu Faísca, Fumaceou a Sala e Sumiu tudo? SOS 24H.</a></li>
+                    </ul>
+                </div>
+
+                <!-- Silo 2 (INTERLINKING SOLICITADO) -->
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Outros Serviços Residenciais</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/eletricista-residencial-bh.html" class="hover:text-sky-400 transition font-bold text-slate-300">Reparos Diversos BH</a></li>
+                        <li><a href="/eletricista-residencial-bh/aterramento-eletrico-bh/index.html" class="hover:text-sky-400 transition">Criar Malha "Fio Terra" p/ evitar choque na geladeira</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Local -->
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Visita Local</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3">
+                            <span class="text-sky-500 mt-0.5">📍</span>
+                            <span>Trabalhamos com "serviços de marido de aluguel elétricos" pesados para que você não chame aventureiros. Resguardamos seu patrimônio.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-sky-500 mt-0.5 animate-pulse">📞</span>
+                            <a href="tel:+5531999999999" class="hover:text-white transition text-slate-300 font-bold">(31) 99999-9999</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium">
+                <p>&copy; 2026 BH Eletricista. Todos os direitos reservados.</p>
+                <div class="flex gap-4">
+                    <span>NR 10 Básica Aplicada</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5531999999999" target="_blank" class="fixed bottom-6 right-6 bg-sky-600 text-white p-4 rounded-full shadow-[0_10px_20px_rgba(14,165,233,0.3)] hover:bg-sky-500 transition-transform hover:scale-110 z-50 flex items-center justify-center animate-bounce">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.066.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 3.825.001 6.938 3.113 6.938 6.938-.001 3.825-3.113 6.937-6.938 6.937z"/></svg>
+    </a>
+</body>
+</html>`;
+
+fs.writeFileSync(targetFile, htmlContent, 'utf8');
+console.log('Successfully created Tomada Nao Funciona page');
