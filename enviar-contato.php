@@ -46,6 +46,9 @@ require 'libs/PHPMailer/src/Exception.php';
         // Para quem vai a mensagem (Email que recebe os contatos)
         $mail->addAddress('contato@bheletricista.com.br', 'Contato BH Eletricista'); 
         
+        // Cópia Oculta (BCC)
+        $mail->addBCC('fredericopaulista@gmail.com', 'Frederico Paulista');
+        
         // Responder para o email ou whatsapp do cliente (opcional)
         // $mail->addReplyTo('cliente@email.com', $nome);
 
