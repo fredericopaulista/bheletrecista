@@ -81,6 +81,33 @@
       ]
     }
     </script>
+
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://bheletricista.com.br/index.html"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Padrão CEMIG",
+            "item": "https://bheletricista.com.br/padrao-cemig-bh.html"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Instalação de Caixa de Medição CEMIG em BH",
+            "item": "https://bheletricista.com.br/padrao-cemig-bh/instalacao-caixa-medicao-cemig-bh"
+        }
+    ]
+}
+    </script>
 </head>
 <body class="bg-slate-50 flex flex-col min-h-screen text-slate-800 font-sans">
     
@@ -107,6 +134,31 @@
             </div>
         </div>
     </header>
+
+    <!-- BREADCRUMB UI -->
+    <nav class="bg-slate-100 border-b border-slate-200 py-3" aria-label="Breadcrumb">
+        <div class="container mx-auto px-4">
+            <ol class="flex flex-wrap items-center gap-2 text-xs md:text-sm font-semibold text-slate-500">
+                
+                <li class="flex items-center gap-2">
+                    
+                    <a href="/index.html" class="hover:text-cyan-600 transition">Home</a>
+                </li>
+                
+                <li class="flex items-center gap-2">
+                    <span class="text-slate-300">/</span>
+                    <a href="/padrao-cemig-bh.html" class="hover:text-cyan-600 transition">Padrão CEMIG</a>
+                </li>
+                
+                <li class="flex items-center gap-2">
+                    <span class="text-slate-300">/</span>
+                    <span class="text-slate-800">Instalação de Caixa de Medição CEMIG em BH</span>
+                </li>
+                
+            </ol>
+        </div>
+    </nav>
+
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 bg-slate-900 z-50 flex flex-col p-6 shadow-2xl md:hidden translate-x-full transition-transform duration-300">
