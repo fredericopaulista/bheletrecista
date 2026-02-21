@@ -25,10 +25,10 @@ require 'libs/PHPMailer/src/Exception.php';
         // CONFIGURAÇÕES DO SERVIDOR SMTP
         // ==========================================
         $mail->isSMTP();
-        $mail->Host       = 'smtp.seudominio.com.br'; // Ex: smtp.hostgator.com.br, smtp.gmail.com
+        $mail->Host       = 'mail.bheletricista.com.br'; // Ex: smtp.hostgator.com.br, smtp.gmail.com
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'seu_email@bheletricista.com.br'; // Email de envio (SMTP Username)
-        $mail->Password   = 'sua_senha_aqui'; // Senha do email
+        $mail->Username   = 'noreply@bheletricista.com.br'; // Email de envio (SMTP Username)
+        $mail->Password   = 'z_Qbtjyk6YnzjjH!'; // Senha do email
         
         // Criptografia (Geralmente STARTTLS na porta 587 ou SMTPS na porta 465)
         $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS; // ou ENCRYPTION_STARTTLS
@@ -41,7 +41,7 @@ require 'libs/PHPMailer/src/Exception.php';
         // CONFIGURAÇÕES DE REMETENTE E DESTINATÁRIO
         // ==========================================
         // Quem está enviando (Geralmente TEM QUE SER o mesmo email do Username do SMTP)
-        $mail->setFrom('seu_email@bheletricista.com.br', 'Site - BH Eletricista');
+        $mail->setFrom('noreply@bheletricista.com.br', 'Site - BH Eletricista');
         
         // Para quem vai a mensagem (Email que recebe os contatos)
         $mail->addAddress('contato@bheletricista.com.br', 'Contato BH Eletricista'); 
