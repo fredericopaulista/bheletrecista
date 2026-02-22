@@ -8,6 +8,22 @@
     <meta name="description"
         content="Eletricista na Savassi em Belo Horizonte. Atendimento 24 horas para residências e comércios. Ligue agora e solicite atendimento imediato.">
     <link rel="canonical" href="https://bheletricista.com.br/bairro/eletricista-savassi-bh/">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bheletricista.com.br/bairro/eletricista-savassi-bh/">
+    <meta property="og:title" content="Eletricista na Savassi BH 24 Horas | BH Eletricista">
+    <meta property="og:description"
+        content="Eletricista na Savassi em Belo Horizonte. Atendimento premium 24h para residências, bares e comércios de alto padrão. Técnicos especializados NR-10.">
+    <meta property="og:image" content="https://bheletricista.com.br/assets/img/logo.jpg">
+    <meta property="og:locale" content="pt_BR">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Eletricista na Savassi BH | Orçamento 24h">
+    <meta name="twitter:description"
+        content="Atendimento imediato na região da Savassi e Centro-Sul de BH. Residencial e comercial.">
+    <meta name="twitter:image" content="https://bheletricista.com.br/assets/img/logo.jpg">
+
     <link rel="stylesheet" href="../../assets/css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -22,18 +38,23 @@
           "name": "Eletricista Savassi BH - BH Eletricista",
           "url": "https://bheletricista.com.br/bairro/eletricista-savassi-bh/",
           "telephone": "+5531998955912",
-          "image": "https://bheletricista.com.br/assets/images/logo.png",
-          "priceRange": "$$",
+          "image": "https://bheletricista.com.br/assets/img/logo.jpg",
+          "priceRange": "$$$",
           "address": {
             "@type": "PostalAddress",
+            "streetAddress": "Belo Horizonte Savassi",
             "addressLocality": "Belo Horizonte",
             "addressRegion": "MG",
+            "postalCode": "30140-000",
             "addressCountry": "BR"
           },
-          "areaServed": {
-            "@type": "Neighborhood",
-            "name": "Savassi, Belo Horizonte"
-          }
+          "areaServed": [
+            { "@type": "Neighborhood", "name": "Savassi" },
+            { "@type": "Neighborhood", "name": "Lourdes" },
+            { "@type": "Neighborhood", "name": "Funcionários" },
+            { "@type": "Neighborhood", "name": "Serra" }
+          ],
+          "openingHours": "Mo-Su 00:00-23:59"
         },
         {
           "@type": "Service",
@@ -54,7 +75,7 @@
               "name": "Quanto custa um eletricista na Savassi?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "O valor depende do tipo de serviço e urgência. Realizamos orçamento antes da execução."
+                "text": "O custo de um eletricista na Savassi reflete a complexidade técnica e a rapidez do atendimento em uma área nobre de BH. Oferecemos orçamentos premium com transparência total, priorizando a segurança das instalações em apartamentos de luxo e estabelecimentos comerciais."
               }
             },
             {
@@ -62,7 +83,7 @@
               "name": "Vocês atendem restaurantes e lojas na Savassi?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Sim. Trabalhamos com manutenção elétrica comercial corretiva e preventiva."
+                "text": "Sim, somos especialistas no atendimento a bares, restaurantes e lojas na Savassi. Oferecemos soluções de manutenção elétrica para cozinhas industriais, iluminação planejada e suporte 24 horas para garantir que seu negócio não pare por falhas elétricas."
               }
             },
             {
@@ -70,7 +91,7 @@
               "name": "Atendem emergência à noite?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Sim, atendimento 24 horas na Savassi para não interromper negócios e residências."
+                "text": "Sim, possuímos equipes de plantão de prontidão na região Centro-Sul para atender emergências elétricas 24 horas. Atendemos chamados de curto-circuito, disjuntores aquecidos e falta de fase com deslocamento imediato na Savassi."
               }
             },
             {
@@ -78,7 +99,7 @@
               "name": "Fazem adequação de padrão elétrico?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Sim, realizamos instalação e adequação conforme normas técnicas da CEMIG."
+                "text": "Sim, realizamos toda a adequação física e técnica do padrão CEMIG na região da Savassi, garantindo que a entrada de energia suporte novas cargas e esteja em conformidade com as normas ND-5.1 e ND-5.2 da concessionária."
               }
             }
           ]
@@ -144,9 +165,10 @@
                     class="btn-pulse btn-glow bg-amber-500 hover:bg-amber-400 text-slate-950 px-5 md:px-6 py-2 md:py-2.5 rounded-full font-bold transition-all flex items-center gap-2 text-sm md:text-base">
                     <span class="hidden sm:inline">Plantão</span> 24H
                 </a>
-            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none ml-2">
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none ml-2">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke="linecap" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        <path stroke="linecap" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                        </path>
                     </svg>
                 </button>
             </div>
@@ -157,22 +179,22 @@
     <nav class="bg-slate-100 border-b border-slate-200 py-3" aria-label="Breadcrumb">
         <div class="container mx-auto px-4">
             <ol class="flex flex-wrap items-center gap-2 text-xs md:text-sm font-semibold text-slate-500">
-                
+
                 <li class="flex items-center gap-2">
-                    
+
                     <a href="/index.html" class="hover:text-cyan-600 transition">Home</a>
                 </li>
-                
+
                 <li class="flex items-center gap-2">
                     <span class="text-slate-300">/</span>
                     <a href="/index.html" class="hover:text-cyan-600 transition">Bairros</a>
                 </li>
-                
+
                 <li class="flex items-center gap-2">
                     <span class="text-slate-300">/</span>
                     <span class="text-slate-800">Eletricista na Savassi BH 24 Horas</span>
                 </li>
-                
+
             </ol>
         </div>
     </nav>
@@ -520,7 +542,7 @@
                     </ul>
                 </div>
 
-<!-- Contact & Local -->
+                <!-- Contact & Local -->
                 <div>
                     <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Atendimento Local Rápido</h4>
                     <ul class="space-y-3 text-sm">
@@ -560,17 +582,16 @@
         </div>
     </footer>
 
-    
+
 
     <!-- Fixed WhatsApp -->
-    <a href="https://wa.me/5531998955912" target="_blank" class="whatsapp-float"
-        aria-label="Nos contate no WhatsApp">
+    <a href="https://wa.me/5531998955912" target="_blank" class="whatsapp-float" aria-label="Nos contate no WhatsApp">
         <svg width="32" height="32" viewBox="0 0 24 24">
             <path
                 d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.066.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 3.825.001 6.938 3.113 6.938 6.938-.001 3.825-3.113 6.937-6.938 6.937z" />
         </svg>
     </a>
-<script src="../../assets/js/main.js?v=102"></script>
+    <script src="../../assets/js/main.js?v=102"></script>
 </body>
 
 </html>
