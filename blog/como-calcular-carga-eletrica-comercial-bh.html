@@ -9,6 +9,21 @@
         content="Aprenda a calcular a carga elétrica de sua loja ou comércio em Belo Horizonte. Dicas de eletricista comercial para evitar sobrecarga e garantir segurança.">
     <link rel="canonical" href="https://bheletricista.com.br/blog/como-calcular-carga-eletrica-comercial-bh.html">
 
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bheletricista.com.br/blog/como-calcular-carga-eletrica-comercial-bh.html">
+    <meta property="og:title" content="Como Calcular Carga Elétrica Comercial | Eletricista BH">
+    <meta property="og:description"
+        content="Aprenda a calcular a carga elétrica de sua loja ou comércio em Belo Horizonte. Dicas de eletricista comercial para evitar sobrecarga e garantir segurança.">
+    <meta property="og:image" content="https://bheletricista.com.br/assets/img/logo.jpg">
+    <meta property="og:locale" content="pt_BR">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cálculo de Carga Comercial em BH | BH Eletricista">
+    <meta name="twitter:description"
+        content="Sua loja está com o disjuntor caindo? Aprenda a calcular a demanda e evite riscos.">
+    <meta name="twitter:image" content="https://bheletricista.com.br/assets/img/logo.jpg">
+
     <link rel="stylesheet" href="/assets/css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -21,15 +36,24 @@
           "@type": "Electrician",
           "@id": "https://bheletricista.com.br/#localbusiness",
           "name": "BH Eletricista",
-          "image": "https://bheletricista.com.br/assets/images/logo.png",
+          "image": "https://bheletricista.com.br/assets/img/logo.jpg",
           "url": "https://bheletricista.com.br/",
           "telephone": "+5531998955912",
+          "priceRange": "$$",
           "address": {
             "@type": "PostalAddress",
+            "streetAddress": "Belo Horizonte Atendimento B2B",
             "addressLocality": "Belo Horizonte",
             "addressRegion": "MG",
+            "postalCode": "30140-000",
             "addressCountry": "BR"
-          }
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Belo Horizonte" },
+            { "@type": "City", "name": "Nova Lima" },
+            { "@type": "City", "name": "Contagem" }
+          ],
+          "openingHours": "Mo-Su 00:00-23:59"
         },
         {
           "@type": "BlogPosting",
@@ -117,9 +141,10 @@
                     class="btn-pulse btn-glow bg-amber-500 hover:bg-amber-400 text-slate-950 px-5 md:px-6 py-2 md:py-2.5 rounded-full font-bold transition-all flex items-center gap-2 text-sm md:text-base">
                     <span class="hidden sm:inline">Plantão</span> 24H
                 </a>
-            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none ml-3">
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none ml-3">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke="linecap" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        <path stroke="linecap" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                        </path>
                     </svg>
                 </button>
             </div>
@@ -362,21 +387,21 @@
                         "name": "Como saber se minha carga elétrica comercial está adequada?",
                         "acceptedAnswer": {
                           "@type": "Answer",
-                          "text": "Desarmes no quadro com aparelhos ligados, barulhos na caixa ou luz piscando quando motores fortes entram em ação."
+                          "text": "Sinais claros incluem desarmes frequentes do disjuntor principal ao ligar aparelhos simultâneos, barulhos metálicos (estalos) no quadro de luz ou luzes piscando quando motores fortes (ar central ou freezers) entram em ação. No comércio, isso indica saturação da carga ativa e reativa, exigindo adequação imediata para evitar multas da CEMIG."
                         }
                       }, {
                         "@type": "Question",
                         "name": "Qual a diferença entre carga residencial e comercial?",
                         "acceptedAnswer": {
                           "@type": "Answer",
-                          "text": "Residencial possui picos isolados pontuais, o comercial suporta fator reativo potente por períodos de 12 horas seguidas (motores e freezers)."
+                          "text": "A carga residencial foca em picos isolados (banhos e preparo de alimentos), enquanto a carga comercial deve suportar um 'consumo base' pesado e contínuo por 12 horas ou mais. Equipamentos como freezers industriais, fornos de padaria e centrais de ar-condicionado exigem um fator reativo dimensionado para não queimar a fiação por fadiga térmica."
                         }
                       }, {
                         "@type": "Question",
                         "name": "Posso calcular sozinho ou preciso de eletricista?",
                         "acceptedAnswer": {
                           "@type": "Answer",
-                          "text": "Apenas para conhecimento pessoal, sim. Mas na prática real de mudança de bitolas e solicitação a CEMIG um processo e mão de obra devidamente legal de RT se faz vital."
+                          "text": "O cálculo básico pode ser feito para consulta interna, mas para fins legais e de segurança (aprovação de aumento de carga CEMIG), um projeto assinado por eletricista qualificado com NR-10 é indispensável. O erro de dimensionamento em um comércio pode levar a incêndios de grandes proporções e perda total de mercadorias em Belo Horizonte."
                         }
                       }, {
                         "@type": "Question",
@@ -512,7 +537,7 @@
                     </ul>
                 </div>
 
-<!-- Contact & Local -->
+                <!-- Contact & Local -->
                 <div>
                     <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Atendimento Local</h4>
                     <ul class="space-y-3 text-sm">
@@ -531,7 +556,8 @@
 
             <div
                 class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center text-xs font-medium w-full">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left text-xs font-medium w-full">
+                <div
+                    class="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left text-xs font-medium w-full">
                     <p>&copy; 2026 BH Eletricista. Todos os direitos reservados.</p>
                     <div class="flex flex-wrap justify-center gap-2 text-[10px] md:text-xs text-slate-500">
                         <a href="/termos-de-uso.html" class="hover:text-amber-500 transition">Termos de Uso</a>
@@ -586,7 +612,7 @@
             });
         });
     </script>
-<script src="../assets/js/main.js?v=102"></script>
+    <script src="../assets/js/main.js?v=102"></script>
 </body>
 
 </html>
